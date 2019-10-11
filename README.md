@@ -124,7 +124,7 @@ En el archivo `webpack.config.js` agregamos una nueva regla para estos archivos 
 module: {
     rules: [
         {
-            test: /\.(png|jpg|gif)$/,
+            test: /\.(png|jpg|gif|svg)$/,
             use: [
                 {
                     'loader': 'file-loader',
