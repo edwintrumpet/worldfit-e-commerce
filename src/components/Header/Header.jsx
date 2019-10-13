@@ -1,15 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Box, Div, Ul, Li, Img, Span, Logo } from './styles';
 import Menu from '../Menu/Menu';
-import cart from '../../assets/shoping.svg';
+import shopping from '../../assets/shopping.svg';
 import instagram from '../../assets/instagram.svg';
 import facebook from '../../assets/facebook.svg';
 import logo from '../../assets/logo.png';
-import useCosto from '../../hooks/useCosto';
+import calcTotalPrice from '../../utils/calcTotalPrice';
 
-const Header = ({ carrito }) => {
-  const costo = useCosto(carrito);
-  const productos = carrito.length;
+const Header = ({ cart }) => {
+  const totalPrice = calcTotalPrice(cart);
+  const productos = cart.length;
   const message = 'Por compras superiores a $300.000 COP obtienes envío gratis';
 
   return (
@@ -21,8 +22,8 @@ const Header = ({ carrito }) => {
           <Li><Img src={facebook} alt='facebook' /></Li>
           <Li><Img src={instagram} alt='instagram' /></Li>
           <Li>
-            <Img src={cart} alt='carrito de compras' />
-            <Span>{`${productos} ${productos === 1 ? 'producto' : 'productos'} - $${costo}`}</Span>
+            <Img src={shopping} alt='carrito de compras' />
+            <Span>{`${productos} ${productos === 1 ? 'producto' : 'productos'} - $${totalPrice}`}</Span>
           </Li>
         </Ul>
       </Div>
@@ -34,4 +35,10 @@ const Header = ({ carrito }) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart,
+  };
+};
+
+export default connect(mapStateToProps, null)(Header);

@@ -63,7 +63,8 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx']
@@ -84,6 +85,9 @@ module.exports = {
                 }
             }
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -143,6 +147,70 @@ Instalo styled-components para manejar los estilos en componentes
 ```shell
 npm i styled-components -S
 ```
+
+Instalamos **react router** y **redux**
+
+```shell
+npm i react-router-dom redux react-redux -S
+```
+
+Creamos el archivo de reducers en `src/reducers/index.js`
+
+```javascript
+const reducer = (state, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+export default reducer;
+
+```
+
+Creamos un estado inicial en `src/initialState.js`
+
+```javascript
+const initialState = {
+  'cart': [
+    {
+      producto: 'chaqueta premium gris',
+      precio: 865026,
+    },
+    {
+      producto: 'chaqueta slowmotion negra',
+      precio: 764012,
+    },
+  ],
+};
+
+export default initialState;
+
+```
+
+Creamos el store y envolvemos nuestra aplicación en un provider para que todos los componentes tengan acceso al estado global.
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, compose } from 'redux';
+import App from './App';
+import initialState from './initialState';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, initialState, composeEnhancers());
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
+
+```
+
+El manejo de rutas se hará desde el archivo `src/App.jsx`
 
 ## Vistas
 

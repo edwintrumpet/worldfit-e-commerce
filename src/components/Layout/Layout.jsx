@@ -2,9 +2,9 @@ import React from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-const Layout = ({ children, carrito }) => (
+const Layout = ({ children }) => (
   <>
-    <Header carrito={carrito} />
+    <Header />
     {children}
     <Footer />
   </>
