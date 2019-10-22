@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Box, Div, Ul, Li, Img, Span, Logo } from './styles';
+import { Box, Div, Ul, Li, Img, Span, Logo, Promo } from './styles';
 import Menu from '../Menu/Menu';
 import shopping from '../../assets/shopping.svg';
 import instagram from '../../assets/instagram.svg';
@@ -14,24 +14,42 @@ const Header = ({ cart }) => {
   const message = 'Por compras superiores a $300.000 COP obtienes envío gratis';
 
   return (
-    <Box>
-      <Div>
-        <span>{message}</span>
+    <>
+      <Box>
         <Ul>
           <Li>Iniciar sesión</Li>
-          <Li><Img src={facebook} alt='facebook' /></Li>
-          <Li><Img src={instagram} alt='instagram' /></Li>
+          <Li>
+            <a
+              href='https://www.facebook.com/worldfitcolombia1/'
+              target='_blank'
+              rel='noreferrer noopener'
+            >
+              <Img src={facebook} alt='facebook' />
+            </a>
+          </Li>
+          <Li>
+            <a
+              href='https://www.instagram.com/worldfitcol/'
+              target='_blank'
+              rel='noreferrer noopener'
+            >
+              <Img src={instagram} alt='instagram' />
+            </a>
+          </Li>
           <Li>
             <Img src={shopping} alt='carrito de compras' />
-            <Span>{`${productos} ${productos === 1 ? 'producto' : 'productos'} - $${totalPrice}`}</Span>
+            <Span>
+              {`${productos} ${productos === 1 ? 'producto' : 'productos'} - $${totalPrice}`}
+            </Span>
           </Li>
         </Ul>
-      </Div>
-      <Div>
-        <Logo src={logo} alt='worldfit' />
-        <Menu />
-      </Div>
-    </Box>
+        <Div>
+          <Logo src={logo} alt='worldfit' />
+          <Menu />
+        </Div>
+      </Box>
+      <Promo>{message}</Promo>
+    </>
   );
 };
 
