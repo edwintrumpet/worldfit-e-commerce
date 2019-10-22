@@ -1,10 +1,14 @@
 import React from 'react';
+import MainSlide from '../../components/MainSlide/MainSlide';
+import MainSlideItem from '../../components/MainSlide/MainSlideItem/MainSlideItem';
 
 const Home = () => {
   return (
-    <div>
-      Contenido
-    </div>
+    <MainSlide>
+      <MainSlideItem />
+      <MainSlideItem />
+      <MainSlideItem />
+    </MainSlide>
   )
 }
 
