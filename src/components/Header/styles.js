@@ -4,6 +4,7 @@ export const Box = styled.header`
     background-color: #000;
     color: #FFF;
     padding: 0 1.5rem;
+    font-size: 13px;
 `;
 
 export const Div = styled.div`
@@ -11,17 +12,16 @@ export const Div = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 0;
-    font-size: 13px;
-
-    &:first-child {
-        @media (max-width: 760px) {
-            display: none;
-        }
-    }
 `;
 
 export const Ul = styled.ul`
-    display: flex;
+    display: none;
+    justify-content: flex-end;
+    padding: 0.5rem 0;
+
+    @media (min-width: 600px){
+        display: flex;
+    }
 `;
 
 export const Li = styled.li`
@@ -39,4 +39,10 @@ export const Span = styled.span`
 
 export const Logo = styled.img`
     height: 85px;
+`;
+
+export const Promo = styled.p`
+    text-align: center;
+    font-size: 14px;
+    padding: 0.5rem;
 `;

@@ -1,4 +1,5 @@
 const initialState = {
+  'showMenu': false,
   'cart': [
     {
       producto: 'chaqueta premium gris',
