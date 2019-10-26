@@ -1,29 +1,29 @@
 import React from 'react';
-import {Container, Row, Col} from 'styled-bootstrap-grid';
 import Swiper from 'react-id-swiper';
-import {Box, Mierda} from './styles'
+import './MainSlide.scss';
 
-const MainSlide = ({children}) => {
+const MainSlide = ({ children }) => {
   const params = {
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
-      clickable: true
+      clickable: true,
     },
     navigation: {
       nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
+      prevEl: '.swiper-button-prev',
     },
-    spaceBetween: 30
-  }
+    spaceBetween: 30,
+  };
   return (
-    <Box>
+    <section className='boxSlide'>
       {/* <Mierda /> */}
       <Swiper {...params}>
-          {children}
+        {children}
       </Swiper>
-    </Box>
-  )
+    </section>
+  );
 };
 
-export default MainSlide
+export default MainSlide;
+

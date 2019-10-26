@@ -1,0 +1,72 @@
+@import '../../assets/styles/Vars.scss';
+
+.header {
+    background-color: #000;
+    color: #fff;
+    a {
+        color: white;
+        text-decoration: none;
+    }
+}
+.header__topBarLeft {
+    div[class*="col"] {
+        padding: 0;
+    }
+}
+.header__topBarLeft--social {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: $black-medium;
+    .social-item{
+        width: calc(100% / 3);
+        text-align: center;
+        a {
+            display: block;
+            padding: 10px 0;
+            &:hover {
+                background-color: white;
+                i[class*="icon"]{
+                    color: black;
+                }
+            }
+        }
+        .content {
+            display: none;
+        }
+    }
+}
+.header__topBarRight {
+    
+}
+
+.header__topBarLeft--social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left-icons {
+        .hamburguer {
+            background-color: transparent;
+            border: 0;
+        }
+    }
+}
+
+img {
+    height: 13px;
+    transform: translateY(2px);
+}
+
+span {
+    margin-left: 0.5rem;
+}
+
+.logo {
+    height: 85px;
+}
+
+.promo {
+    text-align: center;
+    font-size: 14px;
+    padding: 0.5rem;
+}
