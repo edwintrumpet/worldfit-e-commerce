@@ -1,5 +1,6 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
+import 'swiper/swiper.scss';
 import './MainSlide.scss';
 
 const MainSlide = ({ children }) => {
@@ -13,11 +14,11 @@ const MainSlide = ({ children }) => {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-    spaceBetween: 30,
   };
+  const slide = document.querySelector('.callToAction');
+  console.log(slide);
   return (
     <section className='boxSlide'>
-      {/* <Mierda /> */}
       <Swiper {...params}>
         {children}
       </Swiper>

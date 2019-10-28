@@ -96,3 +96,16 @@
         }
     }
 }
+
+
+// Call to action
+
+.callToAction {
+    background-color: $black-medium;
+    padding: 10px 0;
+}
+.callToAction__message {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+}

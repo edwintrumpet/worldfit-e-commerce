@@ -3,3 +3,12 @@
     background-color: orange;
     height: 100vh;
 }
+.boxSlide--container {
+    height: 100%;
+}
+
+.boxSlide--container__item {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

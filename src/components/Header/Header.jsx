@@ -18,7 +18,7 @@ const Header = ({ cart }) => {
   
   const totalPrice = calcTotalPrice(cart);
   const productos = cart.length;
-  const message = 'Por compras superiores a $300.000 COP obtienes envío gratis';
+  const message = `Por compras superiores a $300.000 COP obtienes envío gratis`;
   const toggleMenu = (e) => {
     setMenu({
       ...menu,
@@ -123,7 +123,17 @@ const Header = ({ cart }) => {
           </Row>
         </Container>
       </header>
-      <div className='promo'>{message}</div>
+      <div className='callToAction'>
+        <Container>
+          <Row>
+            <Col>
+              <p className="callToAction__message">
+                {message}
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </>
   );
 };
