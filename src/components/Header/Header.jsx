@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Menu from '../Menu/Menu';
+import Search from '../Menu/Search';
 import { Container, Row, Col } from 'react-bootstrap';
 import './Header.scss';
-import logo from '../../assets/styles/static/logo.png';
+import mainLogo from '../../assets/static/main-logo.png';
+import secondaryLogo from '../../assets/static/secondary-logo.png';
+
 import calcTotalPrice from '../../utils/calcTotalPrice';
 
 const Header = ({ cart }) => {
+
+  const [menu, setMenu] = useState({
+    menuActive: false,
+    searchActive: false,
+  });
+  
   const totalPrice = calcTotalPrice(cart);
   const productos = cart.length;
   const message = 'Por compras superiores a $300.000 COP obtienes envío gratis';
+  const toggleMenu = (e) => {
+    setMenu({
+      ...menu,
+      menuActive: !menu.menuActive,
+    });
+    document.body.classList.toggle('overlay');
+  };
+
   return (
     <>
       <header className='header'>
@@ -53,12 +70,12 @@ const Header = ({ cart }) => {
               <ul className='header__topBarLeft--user'>
                 <li className='user-item'>
                   <a href="https://www.facebook.com/worldfitcolombia1/">
-                    <i class="icon-user" />
+                    <i className="icon-user" />
                     <span className="content">Iniciar sesión</span>
                   </a>
                 </li>
                 <li className='user-item'>
-                  <i class="icon-cart" />
+                  <i className="icon-cart" />
                   <span className="content">
                     {`${productos} ${productos === 1 ? 'producto' : 'productos'} - $${totalPrice}`}
                   </span>
@@ -68,28 +85,34 @@ const Header = ({ cart }) => {
           </Row>
           <Row className='header__topBarRight'>
             <Col>
-              <div className='header__topBarLeft--social'>
+              <div className='header__topBarRight--social'>
                 <div className="left-icons">
-                  <button id='movilMenu' className="hamburger" type="button">
+                  <button 
+                  id='movilMenu' 
+                  className={`hamburger hamburger--spin${menu.menuActive ? ' is-active' : ''}`}
+                  type="button"
+                  onClick={e => toggleMenu(e)}
+                  >
                     <span className="hamburger-box">
                       <span className="hamburger-inner"></span>
                     </span>
                   </button>
-                  <a href="#">
+                  <a href="#" className="user-link">
                     <i className='icon-user'></i>
                   </a>
                 </div>
                 <div className="logo">
-                  <img className='main-logo' src={logo} alt='worldfit' />
-                  <img className='main-logo' src={logo} alt='worldfit' />
+                  <img className='main-logo' src={mainLogo} alt='worldfit' />
+                  <img className='secondary-logo' src={secondaryLogo} alt='worldfit' />
                 </div>
                 <div className="right-icons">
-                  <Menu />
-                  <a href="#">
-                    <i className='icon-search'></i>
-                  </a>
-                  <a href="#">
-                      <i class="icon-cart" />
+                  <Menu active={menu.menuActive} />
+                  <Search active={menu.searchActive} />
+                  <button className="search-link">
+                    <i className='icon-search' />
+                  </button>
+                  <a href="#" className="cart-link">
+                      <i className="icon-cart" />
                       <span className="content">
                         {`${productos}`}
                       </span>

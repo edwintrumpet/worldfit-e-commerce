@@ -1,15 +1,38 @@
-@import "./reset/Reset.scss";
-@import "~bootstrap/scss/bootstrap-grid";
 @import "./fonts/Fonts.scss";
 @import "./fonts/Icons.scss";
+@import './Vars.scss';
+@import "./reset/Reset.scss";
+@import "~bootstrap/scss/bootstrap-grid";
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: $roboto;
   margin: 0;
+  font-size: 16px;
+  line-height: 1.2em;
+}
+
+body {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 100%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .8);
+    transition: .2s ease-out;
+  }
+  &.overlay {
+    overflow: hidden;
+    &:after {
+      left: 0%;
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: $bebas;
 }
 
 a, i[class*="icon"] {

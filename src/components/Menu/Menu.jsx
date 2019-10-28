@@ -1,23 +1,96 @@
 import React, { useState } from 'react';
-import './Menu.scss';
-import search from '../../assets/styles/static/search.svg';
-import shopping from '../../assets/styles/static/shopping.svg';
+import search from '../../assets/static/search.svg';
+import shopping from '../../assets/static/shopping.svg';
 
-const Menu = () => {
+const Menu = (props) => {
+  const { active } = props;
   const [showMenu, setShowMenu] = useState(false);
-
+  
   return (
-    <>
-      <ul className='menu'>
-        <li className='menu'>inicio</li>
-        <li className='menu'>hombre</li>
-        <li className='menu'>mujer</li>
-        <li className='menu'>¿necesitas ayuda?</li>
-        <li className='menu'>tips y nutrición</li>
-        <li className='menu'>¿quienes somos?</li>
-        <li className='menu'>contáctanos</li>
+    <div className={`menu${active ? ' open' : ''}`}>
+      <button className="menu__panel--index" disable="true">Menu</button>
+      <ul className="main__menu">
+        <li className='main__menu--link'>
+          <a href="#">
+            hombre
+          </a>
+          <i className="menu-forward-arrow icon-arrow-right" />
+          <div className="submenu">
+              <button className="menu__panel--index menu-back">
+                hombre
+                <i className="menu-backward-arrow icon-arrow-left" />
+              </button>
+              <ul className="main__submenu">
+                <li className="main__submenu--link">
+                  <a href="">
+                    Buzos
+                  </a>
+                </li>
+                <li className="main__submenu--link">
+                  <a href="">
+                    Camisetas
+                  </a>
+                </li>
+                <li className="main__submenu--link">
+                  <a href="">
+                    Chaquetas
+                  </a>
+                </li>
+                <li className="main__submenu--link">
+                  <a href="">
+                    Joggers
+                  </a>
+                </li>
+                <li className="main__submenu--link">
+                  <a href="">
+                    Pantalonetas
+                  </a>
+                </li>
+                <li className="main__submenu--link">
+                  <a href="">
+                    Zapatillas
+                  </a>
+                </li>
+                <li className="main__submenu--link">
+                  <a href="">
+                    Nueva Colección
+                  </a>
+                </li>
+              </ul>
+          </div>
+        </li>
+        <li className='main__menu--link'>
+          <a href="#">
+            mujer
+          <i className="menu-forward-arrow icon-arrow-right" />
+          </a>
+        </li>
+        <li className='main__menu--link'>
+          <a href="#">
+            ¿necesitas ayuda?
+          </a>
+          <i className="menu-forward-arrow icon-arrow-right" />
+        </li>
+        <li className='main__menu--link'>
+          <a href="#">
+            tips y nutrición
+          </a>
+          <i className="menu-forward-arrow icon-arrow-right" />
+        </li>
+        <li className='main__menu--link'>
+          <a  href="#">
+            ¿quienes somos?
+          </a>
+          <i className="menu-forward-arrow icon-arrow-right" />
+        </li>
+        <li className='main__menu--link'>
+          <a href="#">
+            contáctanos
+          </a>
+          <i className="menu-forward-arrow icon-arrow-right" />
+        </li>
       </ul>
-    </>
+    </div>
   );
 };
 
