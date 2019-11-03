@@ -15,7 +15,7 @@ const Header = ({ cart }) => {
     menuActive: false,
     searchActive: false,
   });
-  
+
   const totalPrice = calcTotalPrice(cart);
   const productos = cart.length;
   const message = `Por compras superiores a $300.000 COP obtienes envío gratis`;
@@ -32,7 +32,7 @@ const Header = ({ cart }) => {
       <header className='header'>
         <Container>
           <Row className='header__topBarLeft'>
-            <Col md={6} >
+            <Col sm={3} >
               <ul className='header__topBarLeft--social'>
                 <li className='social-item'>
                   <a
@@ -66,7 +66,7 @@ const Header = ({ cart }) => {
                 </li>
               </ul>
             </Col>
-            <Col xs={6} className='d-none'>
+            <Col sm={9} className='d-none d-sm-block'>
               <ul className='header__topBarLeft--user'>
                 <li className='user-item'>
                   <a href="https://www.facebook.com/worldfitcolombia1/">
@@ -87,11 +87,11 @@ const Header = ({ cart }) => {
             <Col>
               <div className='header__topBarRight--social'>
                 <div className="left-icons">
-                  <button 
-                  id='movilMenu' 
-                  className={`hamburger hamburger--spin${menu.menuActive ? ' is-active' : ''}`}
-                  type="button"
-                  onClick={e => toggleMenu(e)}
+                  <button
+                    id='movilMenu'
+                    className={`hamburger hamburger--spin${menu.menuActive ? ' is-active' : ''}`}
+                    type="button"
+                    onClick={e => toggleMenu(e)}
                   >
                     <span className="hamburger-box">
                       <span className="hamburger-inner"></span>

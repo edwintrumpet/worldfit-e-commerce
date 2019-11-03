@@ -1,0 +1,53 @@
+@import '../../assets/styles/Vars.scss';
+
+.newsletter {
+  background-color: $black-light;
+  padding: 50px 0;
+}
+
+.newsletter__content {
+  max-width: 80%;
+  margin: auto;
+  .heading {
+    font-size: 50px;
+    margin: 0 0 15px;
+  }
+  input[type="email"] {
+    width: 100%;
+    border: 0;
+    padding: 10px 5px;
+    margin: 0 0 15px;
+  }
+  input[type="submit"] {
+    @include button-base(cta) ;
+  }
+}
+
+@media only screen and (min-width:576px){
+  .newsletter__content {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width:768px){
+  .newsletter__content {
+    justify-content: space-between;
+    .heading {
+      flex-basis: 60%;
+      margin: 0;
+    }
+    form {
+      padding: 0 10px;
+    }
+  }
+}
+
+@media only screen and (min-width:992px){
+  .newsletter__content {
+    max-width: 960px;
+    .heading {
+      max-width: 480px;
+    }
+  }
+}

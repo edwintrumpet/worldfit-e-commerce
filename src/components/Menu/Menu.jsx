@@ -62,8 +62,8 @@ const Menu = (props) => {
         <li className='main__menu--link'>
           <a href="#">
             mujer
-          <i className="menu-forward-arrow icon-arrow-right" />
           </a>
+          <i className="menu-forward-arrow icon-arrow-right" />
         </li>
         <li className='main__menu--link'>
           <a href="#">

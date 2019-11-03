@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row } from 'react-bootstrap';
 import Swiper from 'react-id-swiper';
 import 'swiper/swiper.scss';
 import './MainSlide.scss';
@@ -9,10 +10,6 @@ const MainSlide = ({ children }) => {
       el: '.swiper-pagination',
       type: 'bullets',
       clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
     },
   };
   const slide = document.querySelector('.callToAction');

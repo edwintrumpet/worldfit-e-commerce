@@ -1,0 +1,56 @@
+@import '../../assets/styles/Vars.scss';
+
+.categorySection {
+  [class*=col] {
+    padding-top: 15px;
+    &:nth-child(even){
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+}
+.categorySection__item {
+  display: block;
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  text-decoration: none;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  &:after {
+    @include overlay(black, 0.03);
+  }
+  .heading {
+    font-size: 30px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media only screen and (min-width:576px){
+  .categorySection {
+    [class*=col] {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      padding-left: 16px;
+      padding-right: 8px;
+      &:nth-child(even){
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 8px;
+        padding-right: 16px;
+      }
+    }
+  }
+  .categorySection__item {
+    min-height: 500px;
+    .heading {
+      font-size: 40px;
+      margin: 100px 0 0;
+    }
+  }
+}

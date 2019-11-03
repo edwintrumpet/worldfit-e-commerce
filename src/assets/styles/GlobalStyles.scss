@@ -4,6 +4,9 @@
 @import "./reset/Reset.scss";
 @import "~bootstrap/scss/bootstrap-grid";
 
+:root {
+  $black-medium: $black-medium;
+}
 * {
   font-family: $roboto;
   margin: 0;
@@ -13,6 +16,8 @@
 
 body {
   position: relative;
+  background-color: black;
+  color: white;
   &:after {
     content: "";
     position: absolute;
@@ -33,8 +38,18 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $bebas;
+  font-weight: 500;
+  line-height: 1em;
 }
 
 a, i[class*="icon"] {
   transition: .5s ease-out;
+}
+
+
+
+@media (min-width: 768px) and (max-width: 979px){
+  .container {
+      max-width: 740px;
+  }
 }
