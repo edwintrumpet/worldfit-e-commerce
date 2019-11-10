@@ -1,0 +1,42 @@
+@import '../../assets/styles/Vars.scss';
+
+.heroBanner {
+  height: 60vh;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center 10%;
+  background-size: cover;
+  z-index: 1;
+  .container, .row {
+    height: 100%;
+  }
+  &:after {
+    @include overlay(black, 0.03) ;
+  }
+}
+
+
+.heroBanner__content {
+  align-self: center;
+  text-align: center;
+  .heading {
+    font-size: 35px;
+    margin: 0 0 20px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  }
+  .btn {
+    @include button-base(border-button) ;
+  }
+}
+
+
+
+
+@media only screen and (min-width:576px){
+  .heroBanner__content {
+    text-align: left;
+    .heading {
+      font-size: 40px;
+    }
+  }
+}

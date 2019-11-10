@@ -1,0 +1,13 @@
+@mixin fadeInCover {
+    animation: .3s coverKeyframes ease;
+}
+
+
+@keyframes coverKeyframes {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}

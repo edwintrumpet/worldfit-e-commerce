@@ -1,0 +1,188 @@
+@import '../../assets/styles/Vars.scss';
+
+%menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 100%;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  z-index: 800;
+  transition: .2s ease-out;
+  &.open {
+    left: 25%;
+    box-shadow: 1px 0 10px 5px #0000007d;
+  }
+  .menu__panel--index {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border: 0;
+    font-family: $bebas;
+    font-size: 20px;
+    letter-spacing: .03em;
+    &.menu-back {
+      position: relative;
+      .menu-backward-arrow {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 10px;
+      }
+    }
+  }
+  .main__menu {
+    padding: 20px 10px 0;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    .main__menu--link {
+      position: relative;
+      &::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        display: block;
+        background-color: rgba(255, 255, 255, .2);
+      }
+      a {
+        display: block;
+        padding: 20px 0;
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      .menu-forward-arrow {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 10px;
+      }
+      //Submenu
+      .submenu{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 100%;
+        background: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        z-index: 2;
+        .main__submenu {
+          @extend .main__menu ;
+          .main__submenu--link {
+            position: relative;
+            &::after {
+              content: "";
+              width: 100%;
+              height: 1px;
+              display: block;
+              background-color: rgba(255, 255, 255, .2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// ul.menu {
+//     display: none;
+
+//     @media (min-width: 890px){
+//         display: flex;
+//     }
+// }
+// li.menu {
+//     padding: 0.5rem;
+//     text-transform: uppercase;
+//     white-space: nowrap;
+//     font-weight: 600;
+// }
+// img.menu {
+//     height: 13px;
+//     transform: translateY(2px);
+// }
+// .movil {
+//     display: flex;
+
+//     @media (min-width: 890px){
+//         display: none;
+//     }
+// }
+// .smallMenu {
+//     cursor: pointer;
+// }
+// .bar {
+//     background-color: #FFF;
+//     height: 2px;
+//     width: 25px;
+//     margin: 6px;
+// }
+// .imgMovil {
+//     height: 25px;
+//     margin: 0 10px;
+//     transform: translateY(2px);
+//     &:nth-child(2){
+//         @media (min-width: 600px){
+//             display: none;
+//         }
+//     }
+// }
+// .menuMovil {
+//     position: absolute;
+//     display: flex;
+//     align-items: flex-end;
+//     flex-direction: column;
+//     top: 0;
+//     left: 20%;
+//     padding: 1rem 2rem;
+//     background-color: #FFF;
+//     color: #000;
+//     width: 80%;
+//     height: 100%;
+//     animation: intro 5s ease;
+//     z-index:1000;
+//     @include fadeInMenu;
+// }
+// .exit {
+//     position: absolute;
+//     height: 25px;
+//     width: 25px;
+//     top: 1rem;
+//     left: 2rem;
+// }
+// .line {
+//     position: absolute;
+//     top: 11.5px;
+//     left: 0;
+//     width: 25px;
+//     height: 2px;
+//     background-color: #000;
+//     transform: rotate(45deg);
+//     pointer-events: none;
+//     &:nth-child(2){
+//         transform: rotate(135deg)
+//     }
+// }
+// .cover {
+//     position: absolute;
+//     top:0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.5);
+//     @include fadeInCover;
+// }

@@ -1,0 +1,12 @@
+@import '../../assets/styles/Vars.scss';
+
+%search {
+  background: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 0vh;
+  overflow: hidden;
+  color: black;
+}
