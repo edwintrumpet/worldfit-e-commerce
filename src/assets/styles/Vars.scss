@@ -8,6 +8,8 @@ $bebas: 'Bebas Neue', sans-serif;
 
 $black-light: #212121;
 $black-medium: #101010;
+$grey: #464646;
+
 
 //
 // Headings
@@ -106,6 +108,21 @@ $black-medium: #101010;
       &:after {
         width: 100%;
         opacity: 1;
+      }
+    }
+  }
+  @if $type == back { 
+    display: inline-block;
+    color: white;
+    padding: 10px 10px;
+    .icon-arrow-left {
+      margin: 0 5px 0;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+    &:hover {
+      .icon-arrow-left {
+        margin: 0 10px 0;
       }
     }
   }

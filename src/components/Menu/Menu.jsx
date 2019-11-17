@@ -72,12 +72,6 @@ const Menu = (props) => {
           <i className="menu-forward-arrow icon-arrow-right" />
         </li>
         <li className='main__menu--link'>
-          <a href="#">
-            tips y nutrición
-          </a>
-          <i className="menu-forward-arrow icon-arrow-right" />
-        </li>
-        <li className='main__menu--link'>
           <a  href="#">
             ¿quienes somos?
           </a>

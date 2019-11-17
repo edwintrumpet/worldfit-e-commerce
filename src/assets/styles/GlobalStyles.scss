@@ -4,14 +4,17 @@
 @import "./reset/Reset.scss";
 @import "~bootstrap/scss/bootstrap-grid";
 
-:root {
-  $black-medium: $black-medium;
-}
 * {
   font-family: $roboto;
   margin: 0;
   font-size: 16px;
   line-height: 1.2em;
+  outline: 0;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
 }
 
 body {

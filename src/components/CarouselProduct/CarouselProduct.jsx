@@ -27,7 +27,7 @@ export default function CarouselProduct({ children }) {
       <Container>
         <Row>
           <Col xs={12} className='carouselProduct__head'>
-            <h2 class='heading'>productos destacados</h2>
+            <h2 className='heading'>productos destacados</h2>
           </Col>
           <Col xs={12} className='carouselProduct__slide'>
             <Swiper {...params}>
