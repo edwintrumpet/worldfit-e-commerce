@@ -1,0 +1,125 @@
+@import '../../assets/styles/Vars.scss';
+
+.boxProduct {
+  display: flex;
+  flex-direction: column;
+  margin: 0 25px;
+  &:hover {
+    .img-product {
+      img.image-front {
+        opacity: 0;
+      }
+      img.image-back {
+        opacity: 1;
+      }
+    }
+    .buttons {
+      max-height: 50px;
+    }
+  }
+  .img-product {
+    position: relative;
+    max-width: 100%;
+    .flag {
+      position: absolute;
+      z-index: 3;
+      background: black;
+      top: 50px;
+      left: 10px;
+      transform: translate(-40%) rotate(270deg);
+      padding: 2px 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      font-size: 12px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      &.image-back {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: stretch;
+    overflow: hidden;
+    // max-height: 0;
+    transition: .3s ease-out;
+    text-align: center;
+    .cart, .view-more {
+      flex-basis: 50%;
+      border: 0;
+      cursor: pointer;
+      text-transform: uppercase;
+      text-decoration: none;
+      background-color: $grey;
+      color: white;
+      transition: .2s ease-out;
+      padding: 5px 0;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+  .content-product {
+    background-color: black;
+    padding: 10px 0 0;
+    text-align: center;
+    .heading {
+      font-size: 25px;
+      margin: 0 0 5px;
+    }
+    .price {
+      margin: 0 0 10px;
+      .discount {
+        color: $grey;
+        text-decoration: line-through;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width:768px){
+  .boxProduct {
+    margin: 0 0; 
+    .top-product {
+      position: relative;
+    }
+    .img-product {
+      height: 300px;
+    }
+    .buttons {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-height: 0;
+      transition: .3s ease-out;
+      .cart, .view-more {
+        flex-basis: 50%;
+        border: 0;
+        cursor: pointer;
+        text-transform: uppercase;
+        text-decoration: none;
+        background-color: rgba(255,255,255,.8);
+        color: $black-medium;
+        transition: .2s ease-out;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width:992px){
+  .boxProduct {
+    .img-product {
+      height: 450px;
+    }
+  }
+}

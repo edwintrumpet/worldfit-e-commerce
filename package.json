@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/edwintrumpet/worldfit-e-commerce#readme",
   "dependencies": {
+    "numeral": "^2.0.6",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.1",

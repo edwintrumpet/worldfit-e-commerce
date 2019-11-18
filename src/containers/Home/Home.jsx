@@ -4,7 +4,7 @@ import MainSlideItem from '../../components/MainSlide/MainSlideItem/MainSlideIte
 import CategoryGrid from '../../components/CategoryGrid/CategoryGrid';
 import CategoryItem from '../../components/CategoryGrid/CategoryItem/CategoryItem';
 import CarouselProduct from '../../components/CarouselProduct/CarouselProduct';
-import CarouselItem from '../../components/CarouselProduct/CarouselItem';
+import BoxProduct from '../../components/BoxProduct/BoxProduct';
 import HeroBanner from '../../components/HeroBanner/HeroBanner';
 import Newsletter from '../../components/Newsletter/Newsletter';
 
@@ -21,10 +21,10 @@ const Home = () => {
         <CategoryItem />
       </CategoryGrid>
       <CarouselProduct>
-        <CarouselItem />
-        <CarouselItem />
-        <CarouselItem />
-        <CarouselItem />
+        <BoxProduct slide />
+        <BoxProduct slide />
+        <BoxProduct slide />
+        <BoxProduct slide />
       </CarouselProduct>
       <HeroBanner />
       <Newsletter />
