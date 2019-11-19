@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import MainSlide from '../../components/MainSlide/MainSlide';
 import MainSlideItem from '../../components/MainSlide/MainSlideItem/MainSlideItem';
 import CategoryGrid from '../../components/CategoryGrid/CategoryGrid';
 import CategoryItem from '../../components/CategoryGrid/CategoryItem/CategoryItem';
 import CarouselProduct from '../../components/CarouselProduct/CarouselProduct';
-import CarouselItem from '../../components/CarouselProduct/CarouselItem';
+import BoxProduct from '../../components/BoxProduct/BoxProduct';
 import HeroBanner from '../../components/HeroBanner/HeroBanner';
 import Newsletter from '../../components/Newsletter/Newsletter';
 
-const Home = () => {
+const Home = (props) => {
+  const { products } = props;
+  console.log(products);
   return (
     <>
       <MainSlide>
@@ -21,10 +24,7 @@ const Home = () => {
         <CategoryItem />
       </CategoryGrid>
       <CarouselProduct>
-        <CarouselItem />
-        <CarouselItem />
-        <CarouselItem />
-        <CarouselItem />
+        { products.map((product) => <BoxProduct slide key={product.id} {...product} />) }
       </CarouselProduct>
       <HeroBanner />
       <Newsletter />
@@ -32,5 +32,10 @@ const Home = () => {
   )
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products,
+  };
+};
 
+export default connect(mapStateToProps, null)(Home);

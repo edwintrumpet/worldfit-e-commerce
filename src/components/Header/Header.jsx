@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logOutRequest } from '../../actions';
 import { Container, Row, Col } from 'react-bootstrap';
 import Menu from '../Menu/Menu';
 import Search from '../Menu/Search';
@@ -9,13 +10,12 @@ import mainLogo from '../../assets/static/main-logo.png';
 import secondaryLogo from '../../assets/static/secondary-logo.png';
 import calcTotalPrice from '../../utils/calcTotalPrice';
 
-const Header = ({ cart, userActive, user }) => {
-
+const Header = (props) => {
+  const { cart, userActive, user } = props;
   const [menu, setMenu] = useState({
     menuActive: false,
     searchActive: false,
   });
-
   const totalPrice = calcTotalPrice(cart);
   const productos = cart.length;
   const message = 'Por compras superiores a $300.000 COP obtienes envío gratis';
@@ -25,6 +25,10 @@ const Header = ({ cart, userActive, user }) => {
       menuActive: !menu.menuActive,
     });
     document.body.classList.toggle('overlay');
+  };
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    props.logOutRequest();
   };
   return (
     <>
@@ -67,12 +71,16 @@ const Header = ({ cart, userActive, user }) => {
             </Col>
             <Col sm={9} className='d-none d-sm-block'>
               <ul className='header__topBarLeft--user'>
-                <li className='user-item'>
+                {/* <li className='user-item'> */}
+                <li className={`user-item ${ userActive !== false ? 'sub-menu' : ''}`}>
                   { userActive !== false ?
                     (
                       <>
                         <i className='icon-user' />
                         <span className='content'>{`Hola, ${user.name}`}</span>
+                        <button type="button" className="log-out" onClick={handleLogOut}>
+                          Cerrar sesion
+                        </button>
                       </>
                     ) :
                     (
@@ -157,5 +165,7 @@ const mapStateToProps = (state) => {
     user: state.users[state.userActive],
   };
 };
-
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = {
+  logOutRequest,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

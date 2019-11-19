@@ -131,9 +131,33 @@
         justify-content: flex-end;
         align-items: center;
         .user-item{
-            a {
-                padding: 10px;
-                display: block;
+            position: relative;
+            padding: 10px;
+            &.sub-menu {
+                &:hover {
+                    .log-out {
+                        max-height: 100%;
+                    }
+                }
+            }
+            .log-out {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                padding: 0 10px;
+                z-index: 900;
+                border: 0;
+                background: black;
+                color: white;
+                font-size: 14px;
+                transition: .3s ease;
+                max-height: 0;
+                overflow: hidden;
+                appearance: none;
+                cursor: pointer;
+                text-align: right;
             }
             i[class*="icon-"] {
                 margin-right: 5px;
