@@ -16,9 +16,13 @@ const ProductList = (props) => {
     } else {
       e.target.parentElement.previousElementSibling.innerHTML = e.target.innerHTML;
       e.target.parentElement.previousElementSibling.classList.remove('active');
-      console.log(e.target.parentElement.previousElementSibling);
+      setState({
+        ...state,
+        filter: e.target.parentElement.previousElementSibling.innerHTML.toLowerCase(),
+      })
     }
   };
+  
   return (
     <section className='productList'>
       <Container>
@@ -41,11 +45,8 @@ const ProductList = (props) => {
           </Col>
           <Col xs={12} md={8}>
             <div className='productList__list'>
-              { state.filter === false ?
-                products.map((product) => <BoxProduct list key={product.id} {...product} />)
-                : products.map((product) => {
-                  product.tags.filter((type) => type === state.filter && <BoxProduct list key={product.id} {...product} />)
-                })
+              { state.filter === false ? products.map((product) => <BoxProduct list key={product.id} {...product} />)
+                : products.map((product) => product.tags.find(e => e === state.filter) != null && <BoxProduct list key={product.id} {...product} />)
               }
             </div>
           </Col>

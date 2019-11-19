@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import MainSlide from '../../components/MainSlide/MainSlide';
 import MainSlideItem from '../../components/MainSlide/MainSlideItem/MainSlideItem';
 import CategoryGrid from '../../components/CategoryGrid/CategoryGrid';
@@ -8,7 +9,9 @@ import BoxProduct from '../../components/BoxProduct/BoxProduct';
 import HeroBanner from '../../components/HeroBanner/HeroBanner';
 import Newsletter from '../../components/Newsletter/Newsletter';
 
-const Home = () => {
+const Home = (props) => {
+  const { products } = props;
+  console.log(products);
   return (
     <>
       <MainSlide>
@@ -21,10 +24,7 @@ const Home = () => {
         <CategoryItem />
       </CategoryGrid>
       <CarouselProduct>
-        <BoxProduct slide />
-        <BoxProduct slide />
-        <BoxProduct slide />
-        <BoxProduct slide />
+        { products.map((product) => <BoxProduct slide key={product.id} {...product} />) }
       </CarouselProduct>
       <HeroBanner />
       <Newsletter />
@@ -32,5 +32,10 @@ const Home = () => {
   )
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products,
+  };
+};
 
+export default connect(mapStateToProps, null)(Home);
