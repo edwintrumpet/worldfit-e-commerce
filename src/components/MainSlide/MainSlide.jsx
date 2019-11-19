@@ -13,7 +13,6 @@ const MainSlide = ({ children }) => {
     },
   };
   const slide = document.querySelector('.callToAction');
-  console.log(slide);
   return (
     <section className='boxSlide'>
       <Swiper {...params}>

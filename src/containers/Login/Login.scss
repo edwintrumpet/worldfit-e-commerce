@@ -1,0 +1,174 @@
+@import '../../assets/styles/Vars.scss';
+
+
+.LogInOut {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  z-index: 900;
+}
+.LogInOut__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+}
+.LogInOut__header--content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  .logo {
+    max-width: 80px;
+  }
+  .comeback {
+    @include button-base(back);
+  }
+}
+.LogInOut__content {
+  flex-direction: column-reverse;
+  height: 100vh;
+  min-height: 500px;
+}
+.LogInOut__content--backgroundBox {
+  display: none;
+}
+.LogInOut__content--formBox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-height: 100%;
+  background: linear-gradient(to bottom, $black-light 0%, black 100%);
+  padding: 25vh 0 0;
+}
+.LogInOut__content--switchForm {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  margin: 0 0 15px;
+  .divider {
+    margin: 0 10px;
+  }
+  button {
+    position: relative;
+    background: none;
+    border: 0;
+    text-transform: uppercase;
+    color: $grey;
+    letter-spacing: 0.1em;
+    font-family: $bebas;
+    padding: 0 0 5px;
+    transition: .3s ease;
+    cursor: pointer;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto ;
+      width: 0;
+      height: 1px;
+      background-color: white;
+      transition: .3s ease;
+    }
+    &.active {
+      color: white;
+      &:after {
+        content: "";
+        width: 100%;
+      }
+    }
+  }
+}
+.LogInOut__content--form {
+  background-color: $black-medium;
+  padding: 20px;
+  width: 100%;
+  max-width: 250px;
+  form {
+    label {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      margin: 10px 0 5px;
+    }
+    input:not([type="submit"]):not([type="checkbox"]) {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      color: white;
+      font-size: 12px;
+      padding: 10px 0 5px;
+      border-bottom: 1px solid $grey;
+      &::placeholder {
+        color: $grey;
+        font-size: 10px;
+      }
+    }
+    input[type="submit"] {
+      @include button-base(cta);
+      display: block;
+      max-width: 200px;
+      margin: 20px auto 0;
+      font-size: 12px;
+    }
+    .fotget {
+      display: block;
+      color: white;
+      margin: 15px 0 0;
+      font-size: 12px;
+      text-align: center;
+    }
+    .policy {
+      margin: 10px 0 0;
+      display: flex;
+      align-items: center;
+      label {
+        font-size: 8px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      input[type="checkbox"] {
+        margin: 0 5px 0 0;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// Responsive
+
+@media only screen and (min-width:576px){ 
+  .LogInOut__content {
+    flex-direction: row;
+    min-height: 500px;
+    align-items: stretch;
+  }
+  .LogInOut__content--backgroundBox {
+    display: block;
+    padding: 0 !important;
+    max-height: 100%;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 100%);
+      // background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
