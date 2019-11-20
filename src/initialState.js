@@ -1,6 +1,6 @@
 const initialState = {
   'showMenu': false,
-  'userActive': false,
+  'userActive': undefined,
   'users': [
     {
       id: 0,

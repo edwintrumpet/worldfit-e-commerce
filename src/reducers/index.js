@@ -19,7 +19,7 @@ const reducer = (state, action) => {
     case 'LOGOUT_REQUEST':
       return {
         ...state,
-        userActive: false,
+        userActive: undefined,
       };
     default:
       return state;
