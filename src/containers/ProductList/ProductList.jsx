@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'react-bootstrap';
 import BoxProduct from '../../components/BoxProduct/BoxProduct';
+import { loadProducts } from '../../actions';
 import './ProductList.scss';
+import { HOST } from '../../../config';
 
 const ProductList = (props) => {
   const { products } = props;
   const [state, setState] = useState({
     filter: false,
   });
+
+  useEffect(() => {
+    fetch(`${HOST}/products`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        props.loadProducts(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const handleFilter = (e, filter) => {
     e.preventDefault();
     if (!filter) {
@@ -19,10 +37,10 @@ const ProductList = (props) => {
       setState({
         ...state,
         filter: e.target.parentElement.previousElementSibling.innerHTML.toLowerCase(),
-      })
+      });
     }
   };
-  
+
   return (
     <section className='productList'>
       <Container>
@@ -31,7 +49,7 @@ const ProductList = (props) => {
             <aside className='productList__sidebar'>
               <h3 className='heading'>Comprar por categoria</h3>
               <div className='productList__sidebar--filter'>
-                <button className='filter-type' onClick={handleFilter}>Sexo</button>
+                <button type='button' className='filter-type' onClick={handleFilter}>Sexo</button>
                 <ul className='filters'>
                   <li className='filter-item' onClick={(e) => handleFilter(e, true)}>
                     Hombre
@@ -45,9 +63,8 @@ const ProductList = (props) => {
           </Col>
           <Col xs={12} md={8}>
             <div className='productList__list'>
-              { state.filter === false ? products.map((product) => <BoxProduct list key={product.id} {...product} />)
-                : products.map((product) => product.tags.find(e => e === state.filter) != null && <BoxProduct list key={product.id} {...product} />)
-              }
+              { state.filter === false ? products.map((product) => <BoxProduct list key={product.id} {...product} />) :
+                products.map((product) => product.tags.find((e) => e === state.filter) != null && <BoxProduct list key={product.id} {...product} />)}
             </div>
           </Col>
         </Row>
@@ -62,4 +79,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(ProductList);
+const mapDispatchToProps = {
+  loadProducts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

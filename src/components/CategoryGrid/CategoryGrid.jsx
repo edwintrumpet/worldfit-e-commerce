@@ -1,6 +1,6 @@
-import React from 'react'
-import { Container, Row} from 'react-bootstrap'
-import './CategoryGrid.scss'
+import React from 'react';
+import { Container, Row } from 'react-bootstrap';
+import './CategoryGrid.scss';
 
 export default function CategoryGrid({ children }) {
   return (
@@ -11,5 +11,5 @@ export default function CategoryGrid({ children }) {
         </Row>
       </Container>
     </section>
-  )
+  );
 }

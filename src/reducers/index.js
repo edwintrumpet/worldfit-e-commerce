@@ -21,6 +21,11 @@ const reducer = (state, action) => {
         ...state,
         userActive: undefined,
       };
+    case 'LOAD_PRODUCTS':
+      return {
+        ...state,
+        products: action.payload,
+      };
     default:
       return state;
   }

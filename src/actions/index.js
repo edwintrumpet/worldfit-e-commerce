@@ -17,3 +17,8 @@ export const logOutRequest = (payload) => ({
   type: 'LOGOUT_REQUEST',
   payload,
 });
+
+export const loadProducts = (payload) => ({
+  type: 'LOAD_PRODUCTS',
+  payload,
+});

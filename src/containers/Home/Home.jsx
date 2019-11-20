@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import MainSlide from '../../components/MainSlide/MainSlide';
 import MainSlideItem from '../../components/MainSlide/MainSlideItem/MainSlideItem';
@@ -29,8 +29,8 @@ const Home = (props) => {
       <HeroBanner />
       <Newsletter />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
