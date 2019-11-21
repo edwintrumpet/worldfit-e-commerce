@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from '../containers/Home/Home';
 import Login from '../containers/Login/Login';
+import UsersList from '../containers/UsersList/UsersList';
 import ProductList from '../containers/ProductList/ProductList';
 import Layout from '../components/Layout/Layout';
 import { loginRequest } from '../actions';
@@ -37,6 +38,7 @@ const App = (props) => {
           <Route exact path='/' component={Home} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/productos' component={ProductList} />
+          <Route exact path='/users' component={UsersList} />
         </Layout>
       </Switch>
     </BrowserRouter>
