@@ -16,7 +16,6 @@ const ProductList = (props) => {
     data = `?tags[]=${state.filter}`;
   }
   useEffect(() => {
-    console.log('useEffect');
     fetch(`${HOST}/products${data}`, {
       method: 'GET',
       headers: {
