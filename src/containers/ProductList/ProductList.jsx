@@ -11,9 +11,13 @@ const ProductList = (props) => {
   const [state, setState] = useState({
     filter: false,
   });
-
+  let data = '';
+  if (state.filter) {
+    data = `?tags[]=${state.filter}`;
+  }
   useEffect(() => {
-    fetch(`${HOST}/products`, {
+    console.log('useEffect');
+    fetch(`${HOST}/products${data}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +29,7 @@ const ProductList = (props) => {
         props.loadProducts(response.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [state]);
 
   const handleFilter = (e, filter) => {
     e.preventDefault();
@@ -63,8 +67,7 @@ const ProductList = (props) => {
           </Col>
           <Col xs={12} md={8}>
             <div className='productList__list'>
-              { state.filter === false ? products.map((product) => <BoxProduct list key={product.id} {...product} />) :
-                products.map((product) => product.tags.find((e) => e === state.filter) != null && <BoxProduct list key={product.id} {...product} />)}
+              {products.map((product) => <BoxProduct list key={product.id} {...product} />)}
             </div>
           </Col>
         </Row>
