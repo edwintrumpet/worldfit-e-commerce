@@ -107,24 +107,6 @@ const Login = (props) => {
         // Implementar aviso de que las contraseñas no coinciden
       }
     }
-    // if (e.target.name === 'login') {
-    //   props.users.filter((key) => {
-    //     if (key.email === userState.email && key.password === userState.password) {
-    //       props.loginRequest(key.id);
-    //       props.history.push('/');
-    //     } else {
-    //       alert('No te encuentras registrado');
-    //     }
-    //   });
-    // } else {
-    //   props.registerRequest({
-    //     id: props.users.length,
-    //     name: userState.name,
-    //     email: userState.email,
-    //     password: userState.password,
-    //   });
-    //   props.history.push('/');
-    // }
   };
   return (
     <section className='LogInOut'>

@@ -28,7 +28,6 @@ const Home = (props) => {
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log(products);
   return (
     <>
       <MainSlide>
