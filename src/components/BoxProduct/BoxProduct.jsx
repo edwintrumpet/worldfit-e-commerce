@@ -3,7 +3,7 @@ import './BoxProduct.scss';
 
 export default function BoxItem(props) {
   const numeral = require('numeral');
-  const { slide, list, id, nameProduct, description, minPrice, maxPrice, mainImage, backImage, tags } = props;
+  const { slide, list, id, nameProduct, minPrice, maxPrice, images, tags } = props;
 
   return (
     <div className={`${slide ? 'swiper-slide' : ''} ${list ? 'productList__list--item' : ''}`}>
@@ -11,8 +11,8 @@ export default function BoxItem(props) {
         <div className='top-product'>
           <figure className='img-product'>
             { tags.map((dest, index) => (dest === 'destacado' && <span className='flag' key={index}>destacado</span>))}
-            <img className='image-front' src={mainImage} alt='' />
-            <img className='image-back' src={backImage} alt='' />
+            <img className='image-front' src={images[0]} alt='' />
+            <img className='image-back' src={images[1]} alt='' />
           </figure>
           <div className='buttons'>
             <button className='cart'>

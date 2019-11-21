@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from '../containers/Home/Home';
 import Login from '../containers/Login/Login';
 import ProductList from '../containers/ProductList/ProductList';
 import Layout from '../components/Layout/Layout';
+import { loginRequest } from '../actions';
 import '../assets/styles/GlobalStyles.scss';
+import { HOST } from '../../config';
 
-const App = () => {
+const App = (props) => {
+
+  useEffect(() => {
+    fetch(`${HOST}/users/own`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.message === 'Authenticated user data') {
+          props.loginRequest(response.data);
+        }
+      })
+      .catch(() => {
+        // Aquí entra cuando no hay cookie de sesión
+      });
+  }, []);
 
   return (
     <BrowserRouter>
@@ -21,4 +43,7 @@ const App = () => {
   );
 };
 
-export default App;
+const mapDispatchToProps = {
+  loginRequest,
+};
+export default connect(null, mapDispatchToProps)(App);

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOutRequest } from '../../actions';
+// eslint-disable-next-line
 import { Container, Row, Col } from 'react-bootstrap';
 import Menu from '../Menu/Menu';
 import Search from '../Menu/Search';
@@ -9,9 +10,10 @@ import './Header.scss';
 import mainLogo from '../../assets/static/main-logo.png';
 import secondaryLogo from '../../assets/static/secondary-logo.png';
 import calcTotalPrice from '../../utils/calcTotalPrice';
+import { HOST } from '../../../config';
 
 const Header = (props) => {
-  const { cart, userActive, user } = props;
+  const { cart, userActive } = props;
   const [menu, setMenu] = useState({
     menuActive: false,
     searchActive: false,
@@ -28,6 +30,18 @@ const Header = (props) => {
   };
   const handleLogOut = (e) => {
     e.preventDefault();
+    fetch(`${HOST}/auth/log-out`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        // Sesión terminada
+      })
+      .catch((err) => console.log(err));
     props.logOutRequest();
   };
   return (
@@ -72,13 +86,13 @@ const Header = (props) => {
             <Col sm={9} className='d-none d-sm-block'>
               <ul className='header__topBarLeft--user'>
                 {/* <li className='user-item'> */}
-                <li className={`user-item ${ userActive !== false ? 'sub-menu' : ''}`}>
-                  { userActive !== false ?
+                <li className={`user-item ${!((userActive === null) || (userActive === undefined)) ? 'sub-menu' : ''}`}>
+                  { !((userActive === null) || (userActive === undefined)) ?
                     (
                       <>
                         <i className='icon-user' />
-                        <span className='content'>{`Hola, ${user.name}`}</span>
-                        <button type="button" className="log-out" onClick={handleLogOut}>
+                        <span className='content'>{`Hola, ${userActive.name}`}</span>
+                        <button type='button' className='log-out' onClick={handleLogOut}>
                           Cerrar sesion
                         </button>
                       </>
@@ -162,7 +176,6 @@ const mapStateToProps = (state) => {
   return {
     cart: state.cart,
     userActive: state.userActive,
-    user: state.users[state.userActive],
   };
 };
 const mapDispatchToProps = {

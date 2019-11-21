@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import MainSlide from '../../components/MainSlide/MainSlide';
 import MainSlideItem from '../../components/MainSlide/MainSlideItem/MainSlideItem';
@@ -8,9 +8,26 @@ import CarouselProduct from '../../components/CarouselProduct/CarouselProduct';
 import BoxProduct from '../../components/BoxProduct/BoxProduct';
 import HeroBanner from '../../components/HeroBanner/HeroBanner';
 import Newsletter from '../../components/Newsletter/Newsletter';
+import { loadProducts } from '../../actions';
+import { HOST } from '../../../config';
 
 const Home = (props) => {
   const { products } = props;
+
+  useEffect(() => {
+    fetch(`${HOST}/products?tags[]=destacado`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        props.loadProducts(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   console.log(products);
   return (
     <>
@@ -24,13 +41,15 @@ const Home = (props) => {
         <CategoryItem />
       </CategoryGrid>
       <CarouselProduct>
-        { products.map((product) => <BoxProduct slide key={product.id} {...product} />) }
+        {
+          products.map((product) => <BoxProduct slide key={product.id} {...product} />)
+        }
       </CarouselProduct>
       <HeroBanner />
       <Newsletter />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -38,4 +57,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = {
+  loadProducts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
