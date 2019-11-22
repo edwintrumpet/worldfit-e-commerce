@@ -43,6 +43,8 @@ const ProductList = (props) => {
       });
     }
   };
+  console.log(products);
+  
   return (
     <section className='productList'>
       <Container>

@@ -8,6 +8,7 @@ import './SingleProduct.scss';
 import { HOST } from '../../../config';
 
 const SingleProduct = (props) => {
+  const numeral = require('numeral');
   const params = {
     slidesPerView: 1,
     breakpoints: {
@@ -25,9 +26,9 @@ const SingleProduct = (props) => {
       draggable: true,
     },
   };
+  const { products } = props;
   const [product, setProduct] = useState({
-    id: '5dd7356006798308475f5016',
-    // images: props.products[0].images,
+    id: '5dd80f069496dc52c91d9867',
   });
   useEffect(() => {
     fetch(`${HOST}/products/?id=${product.id}`, {
@@ -42,34 +43,67 @@ const SingleProduct = (props) => {
         props.loadProducts(response.data);
       })
       .catch((err) => console.log(err));
-  }, [product]);
-  console.log(product);
+    }, [product]);
+    console.log(products);
   return (
     <section className="singleProduct">
       <Container>
         <Row>
-          <Col xs={12}>
+          <Col xs={12} md={8}>
             <div className="singleProduct__gallery">
               <div className="singleProduct__gallery--heading">
                 <div className="tags">Hombre, mujer </div>
-                <h1 className="heading">Nombre del producto</h1>
+                <h1 className="heading">
+                  {products.map((product) => product.nameProduct)}
+                </h1>
                 <div className="prices">
-                  50.000 - <span className='discount'>100.000</span>
+                  { products.map((product) => product.minPrice ? (
+                    <>
+                      {numeral(product.minPrice).format('$ 0,0[.]00')} - <span className='discount'>{numeral(product.maxPrice).format('$ 0,0[.]00')}</span>
+                    </>
+                  ) : product.maxPrice)}
                 </div>
               </div>
               <div className="singleProduct__gallery--slide">
-                <Swiper {...params}>
-                  <div className="swiper-slide">
-                    {/* {props.products[0].images.map((image) => console.log(image))} */}
-                  </div>
-                  <div className="swiper-slide">2</div>
-                  <div className="swiper-slide">3</div>
-                </Swiper>
+                <ul className="gallery">
+                  {products.map((product) => product.images.map((img) => <li className="img-item"><img src={img} /></li>))}
+                </ul>
               </div>
             </div>
           </Col>
-          <Col xs={12}>
-            Detalle
+          <Col xs={12} md={4}>
+            <div className="singleProduct__description">
+              <div className="singleProduct__description--heading">
+                  <div className="tags">Hombre, mujer </div>
+                  <h1 className="heading">
+                    {products.map((product) => product.nameProduct)}
+                  </h1>
+                  <div className="prices">
+                    { products.map((product) => product.minPrice ? (
+                      <>
+                        {numeral(product.minPrice).format('$ 0,0[.]00')} - <span className='discount'>{numeral(product.maxPrice).format('$ 0,0[.]00')}</span>
+                      </>
+                    ) : product.maxPrice)}
+                  </div>
+              </div>
+              <div className="singleProduct__description--content">
+                  <p className="description">
+                    Top sin arco con copas triangulartes y con buen cubrimiento del busto, al interior están forradas con tela suave para dar mayor confort y evitar marcas. Suave elástico ancho en la base que se ajusta perfectamente al cuerpo brindando gran sostenimiento y cuenta con cargaderas ajustables
+                  </p>
+              </div>
+              <div className="singleProduct__description--actions">
+                  <form action="">
+                    <label htmlFor="">Cantidad</label>
+                    <input type="number" name="" id="" placeholder="1" />
+                    <label htmlFor="">Talla</label>
+                    <select name="" id="">
+                      <option value="s">s</option>
+                      <option value="m">m</option>
+                    </select>
+                    <input type="submit" value="añadir al carrito"/>
+                  </form>
+              </div>
+            </div>
           </Col>
         </Row>  
       </Container>

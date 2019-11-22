@@ -6,7 +6,11 @@
   padding: 20px 0;
 }
 .singleProduct__gallery {
-
+  .gallery {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .singleProduct__gallery--heading {
@@ -19,7 +23,7 @@
     margin: 0 auto 10px;
   }
   .heading {
-    margin: 0 auto 20px;
+    margin: 0 auto 10px;
   }
   .prices {
     font-weight: 600;
@@ -35,4 +39,70 @@
 
 .singleProduct__gallery--slide {
   padding: 20px 0;
+}
+
+.singleProduct__description--heading {
+  @extend .singleProduct__gallery--heading ;
+  display: none;
+}
+
+.singleProduct__description--actions {
+  background-color: $grey-light;
+  padding: 10px;
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    label {
+      font-family: $bebas;
+      letter-spacing: .1em;
+      font-size: 20px;
+    }
+    input:not([type="submit"]), select {
+      width: 100%;
+      margin: 10px 0;
+      background: white;
+    }
+    input[type="submit"] {
+      background: black;
+      display: block;
+      color: white;
+      border: 0;
+      width: 100%;
+      text-transform: uppercase;
+      padding: 15px 10px;
+      border-radius: 20px;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+  }
+}
+
+.singleProduct__description--content {
+  padding: 20px 0;
+  .description {
+    text-align: justify;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .singleProduct__gallery--heading {
+    display: none;
+  }
+  .singleProduct__gallery--slide {
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      .img-item {
+        flex-basis: 48%;
+      }
+    }
+  }
+  .singleProduct__description--heading {
+    display: block;
+  }
+  .singleProduct__description--actions {
+    padding: 20px;
+  }
 }
