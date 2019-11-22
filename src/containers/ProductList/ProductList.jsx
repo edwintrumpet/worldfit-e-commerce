@@ -43,8 +43,6 @@ const ProductList = (props) => {
       });
     }
   };
-  console.log(products);
-  
   return (
     <section className='productList'>
       <Container>
@@ -55,7 +53,7 @@ const ProductList = (props) => {
               <div className='productList__sidebar--filter'>
                 <button type='button' className='filter-type' onClick={handleFilter}>Sexo</button>
                 <ul className='filters'>
-                  <li className='filter-item' onClick={(e) => handleFilter(e, true)} data-count={products.map((product) => console.log(product.tags))}>
+                  <li className='filter-item' onClick={(e) => handleFilter(e, true)}>
                     Hombre
                   </li>
                   <li className='filter-item' onClick={(e) => handleFilter(e, true)}>

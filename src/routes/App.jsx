@@ -6,6 +6,8 @@ import Login from '../containers/Login/Login';
 import UsersList from '../containers/UsersList/UsersList';
 import ProductList from '../containers/ProductList/ProductList';
 import Layout from '../components/Layout/Layout';
+import SingleProduct from '../containers/SingleProduct/SingleProduct';
+
 import { loginRequest } from '../actions';
 import '../assets/styles/GlobalStyles.scss';
 import { HOST } from '../../config';
@@ -39,6 +41,7 @@ const App = (props) => {
           <Route exact path='/login' component={Login} />
           <Route exact path='/productos' component={ProductList} />
           <Route exact path='/users' component={UsersList} />
+          <Route exact path='/producto/:id' component={SingleProduct} />
         </Layout>
       </Switch>
     </BrowserRouter>
