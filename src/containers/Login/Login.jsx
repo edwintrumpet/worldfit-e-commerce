@@ -1,8 +1,8 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import React, { useState } from 'react';
 import { encode } from 'base-64';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Container, Row, Col } from 'react-bootstrap';
 import { loginRequest } from '../../actions';
 import mainLogo from '../../assets/static/secondary-logo.png';

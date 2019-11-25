@@ -22,3 +22,17 @@ export const loadProducts = (payload) => ({
   type: 'LOAD_PRODUCTS',
   payload,
 });
+
+export const addCart = (payload) => {
+  return ({
+    type: 'ADD_TO_CART',
+    payload,
+  });
+};
+
+export const removeCart = (payload) => {
+  return ({
+    type: 'REMOVE_TO_CART',
+    payload,
+  });
+};

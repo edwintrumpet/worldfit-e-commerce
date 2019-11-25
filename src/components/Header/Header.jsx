@@ -105,10 +105,12 @@ const Header = (props) => {
                     )}
                 </li>
                 <li className='user-item'>
-                  <i className='icon-cart' />
-                  <span className='content'>
-                    {`${productos} ${productos === 1 ? 'producto' : 'productos'} - $${totalPrice}`}
-                  </span>
+                  <Link to='/carrito'>
+                    <i className='icon-cart' />
+                    <span className='content'>
+                      {`${productos} ${productos === 1 ? 'producto' : 'productos'} - $${totalPrice}`}
+                    </span>
+                  </Link>
                 </li>
               </ul>
             </Col>
@@ -142,7 +144,7 @@ const Header = (props) => {
                 <div className='right-icons'>
                   <Menu active={menu.menuActive} />
                   <Search active={menu.searchActive} />
-                  <button className='search-link'>
+                  <button type='button' className='search-link'>
                     <i className='icon-search' />
                   </button>
                   <a href='#' className='cart-link'>

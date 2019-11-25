@@ -96,6 +96,7 @@
       flex-wrap: wrap;
       .img-item {
         flex-basis: 48%;
+        margin: 0 5px;
       }
     }
   }
@@ -104,5 +105,8 @@
   }
   .singleProduct__description--actions {
     padding: 20px;
+  }
+  .singleProduct__gallery--slide {
+    padding: 0;
   }
 }

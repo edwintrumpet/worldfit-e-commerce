@@ -7,6 +7,8 @@ import UsersList from '../containers/UsersList/UsersList';
 import ProductList from '../containers/ProductList/ProductList';
 import Layout from '../components/Layout/Layout';
 import SingleProduct from '../containers/SingleProduct/SingleProduct';
+import Cart from '../containers/Cart/Cart';
+import Checkout from '../containers/Checkout/Checkout';
 
 import { loginRequest } from '../actions';
 import '../assets/styles/GlobalStyles.scss';
@@ -41,7 +43,9 @@ const App = (props) => {
           <Route exact path='/login' component={Login} />
           <Route exact path='/productos' component={ProductList} />
           <Route exact path='/users' component={UsersList} />
-          <Route exact path='/producto/:id' component={SingleProduct} />
+          <Route exact path='/producto/' component={SingleProduct} />
+          <Route extact path='/carrito' component={Cart} />
+          <Route extact path='/checkout' component={Checkout} />
         </Layout>
       </Switch>
     </BrowserRouter>

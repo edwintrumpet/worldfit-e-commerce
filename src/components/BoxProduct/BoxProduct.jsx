@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { addCart } from '../../actions';
 import './BoxProduct.scss';
+import { HOST } from '../../../config';
 
-export default function BoxItem(props) {
-  const numeral = require('numeral');
+const BoxItem = (props) => {
+  const numeral = require('numeral');;
   const { slide, list, id, nameProduct, minPrice, maxPrice, images, tags } = props;
-
+  const handleAddToCart = (e) => {
+    const productClicked = {
+      id: props.id,
+      images: props.images,
+      maxPrice: props.maxPrice,
+      minPrice: props.minPrice,
+      nameProduct: props.nameProduct,
+      tags: props.tags,
+    };
+    props.addCart(productClicked);
+  };
   return (
-    <div className={`${slide ? 'swiper-slide' : ''} ${list ? 'productList__list--item' : ''}`}>
+    <div className={`${slide ? 'swiper-slide' : ''}${list ? 'productList__list--item' : ''}`}>
       <div className='boxProduct'>
         <div className='top-product'>
           <figure className='img-product'>
@@ -15,7 +28,7 @@ export default function BoxItem(props) {
             <img className='image-back' src={images[1]} alt='' />
           </figure>
           <div className='buttons'>
-            <button className='cart'>
+            <button type='button' className='cart' onClick={handleAddToCart}>
               <i className='icon-cart' />
             </button>
             <a href='#' className='view-more'>
@@ -40,4 +53,17 @@ export default function BoxItem(props) {
     </div>
 
   );
-}
+};
+
+const mapDispatchToProps = {
+  addCart,
+};
+
+const mapStateToProps = (state) => {
+  return ({
+    cart: state.cart,
+  });
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BoxItem);
+

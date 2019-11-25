@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Swiper from 'react-id-swiper';
 import 'swiper/swiper.scss';
 import './CarouselProduct.scss';
 
 export default function CarouselProduct({ children }) {
+  const [swiper, useSwiper] = useState(null);
   const params = {
     slidesPerView: 1,
     breakpoints: {
@@ -22,6 +23,15 @@ export default function CarouselProduct({ children }) {
       prevEl: '.swiper-button-prev',
     },
   };
+  useEffect(() => {
+    let timeout ;
+    if (swiper !== null) {
+      timeout = setTimeout(() => swiper.update(), 500);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [swiper]);
   return (
     <section className='carouselProduct'>
       <Container>
@@ -30,7 +40,7 @@ export default function CarouselProduct({ children }) {
             <h2 className='heading'>productos destacados</h2>
           </Col>
           <Col xs={12} className='carouselProduct__slide'>
-            <Swiper {...params}>
+            <Swiper {...params} getSwiper={useSwiper}>
               {children}
             </Swiper>
           </Col>

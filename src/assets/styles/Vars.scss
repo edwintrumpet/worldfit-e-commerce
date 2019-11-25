@@ -9,6 +9,7 @@ $black-light: #212121;
 $black-medium: #101010;
 $grey: #464646;
 $grey-light: #e4e4e4;
+$orange: #fa5400;
 
 
 //
@@ -23,6 +24,7 @@ $grey-light: #e4e4e4;
   font-size: 30px;
   padding: 0 0 30px;
   letter-spacing: 0.04em;
+  margin: 0;
   @media only screen and (min-width:576px){
     font-size: 40px;
   }
@@ -85,7 +87,7 @@ $grey-light: #e4e4e4;
     display: inline-block;
     color: white;
     padding: 10px 40px;
-    background: orange;
+    background: $orange;
     border: 0;
     overflow: hidden;
     &:after {

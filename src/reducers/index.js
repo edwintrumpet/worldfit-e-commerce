@@ -26,6 +26,16 @@ const reducer = (state, action) => {
         ...state,
         products: action.payload,
       };
+    case 'ADD_TO_CART':
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
+    case 'REMOVE_TO_CART':
+      return {
+        ...state,
+        cart: action.payload,
+      };
     default:
       return state;
   }
