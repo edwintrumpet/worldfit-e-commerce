@@ -8,12 +8,10 @@ import { HOST } from '../../../config';
 
 const SingleProduct = (props) => {
   const numeral = require('numeral');
-  const { products } = props;
-  const [product, setProduct] = useState({
-    id: '5dd7356006798308475f5016',
-  });
+  const [product, setProduct] = useState({});
+  const id = props.match.params.id
   useEffect(() => {
-    fetch(`${HOST}/products/?id=${product.id}`, {
+    fetch(`${HOST}/products/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -22,11 +20,12 @@ const SingleProduct = (props) => {
     })
       .then((res) => res.json())
       .then((response) => {
-        props.loadProducts(response.data);
+        setProduct(response.data);
       })
       .catch((err) => console.log(err));
-  }, [product]);
-  return (
+  }, []);
+  const hasProduct = Object.keys(product).length > 0
+  return hasProduct ? (
     <section className='singleProduct'>
       <Container>
         <Row>
@@ -35,10 +34,10 @@ const SingleProduct = (props) => {
               <div className='singleProduct__gallery--heading'>
                 <div className='tags'>Hombre, mujer </div>
                 <h1 className='heading'>
-                  {products.map((product) => product.nameProduct)}
+                  {product.name}
                 </h1>
                 <div className='prices'>
-                  { products.map((product) => (product.minPrice ? (
+                  { product.minPrice ? (
                     <>
                       {numeral(product.minPrice).format('$ 0,0[.]00')}
                       {' '}
@@ -46,12 +45,12 @@ const SingleProduct = (props) => {
                       {' '}
                       <span className='discount'>{numeral(product.maxPrice).format('$ 0,0[.]00')}</span>
                     </>
-                  ) : numeral(product.maxPrice).format('$ 0,0[.]00')))}
+                  ) : numeral(product.maxPrice).format('$ 0,0[.]00')}
                 </div>
               </div>
               <div className='singleProduct__gallery--slide'>
                 <ul className='gallery'>
-                  {products.map((product) => product.images.map((img, index) => <li key={index} className='img-item'><img src={img} /></li>))}
+                  {product.images.map((img, index) => <li key={index} className='img-item'><img src={img} /></li>)}
                 </ul>
               </div>
             </div>
@@ -61,10 +60,10 @@ const SingleProduct = (props) => {
               <div className='singleProduct__description--heading'>
                 <div className='tags'>Hombre, mujer </div>
                 <h1 className='heading'>
-                  {products.map((product) => product.nameProduct)}
+                  {product.nameProduct}
                 </h1>
                 <div className='prices'>
-                  { products.map((product) => (product.minPrice ? (
+                  { product.minPrice ? (
                     <>
                       {numeral(product.minPrice).format('$ 0,0[.]00')}
                       {' '}
@@ -72,7 +71,7 @@ const SingleProduct = (props) => {
                       {' '}
                       <span className='discount'>{numeral(product.maxPrice).format('$ 0,0[.]00')}</span>
                     </>
-                  ) : numeral(product.maxPrice).format('$ 0,0[.]00')))}
+                  ) : numeral(product.maxPrice).format('$ 0,0[.]00')}
                 </div>
               </div>
               <div className='singleProduct__description--content'>
@@ -97,7 +96,7 @@ const SingleProduct = (props) => {
         </Row>
       </Container>
     </section>
-  )
+  ) : (<h1>No hay nada aquí</h1>)
 }
 
 const mapStateToProps = (state) => {

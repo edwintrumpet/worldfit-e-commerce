@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 import { addCart } from '../../actions';
 import './BoxProduct.scss';
 import { HOST } from '../../../config';
@@ -31,9 +32,9 @@ const BoxItem = (props) => {
             <button type='button' className='cart' onClick={handleAddToCart}>
               <i className='icon-cart' />
             </button>
-            <a href='#' className='view-more'>
+            <Link to={`/producto/${id}`} className='view-more'>
               <i className='icon-search' />
-            </a>
+            </Link>
           </div>
         </div>
         <div className='content-product'>
